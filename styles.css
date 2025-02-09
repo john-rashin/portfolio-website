@@ -208,7 +208,7 @@ main {
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     nav > ul {
-        flex-direction: column;
+        flex-direction: row; /* Horizontal alignment on mobile */
     }
     
     #hero {
@@ -239,5 +239,17 @@ main {
     
     .hero_image img {
         max-width: 200px; /* Reduce image size for mobile */
+    }
+    
+    .hero_image::before {
+        width: 250px; /* Reduced width */
+        height: 250px; /* Reduced height */
+        transform: translate(-50%, -50%) scale(1); /* Adjusted scale */
+    }
+
+    .footer {
+        display: flex;
+
+        padding: 20px;
     }
 }
