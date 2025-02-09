@@ -209,6 +209,7 @@ main {
 @media (max-width: 768px) {
     nav > ul {
         flex-direction: row; /* Horizontal alignment on mobile */
+        justify-content: center;
     }
     
     #hero {
