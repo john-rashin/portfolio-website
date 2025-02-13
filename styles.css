@@ -10,6 +10,8 @@ body {
     background:linear-gradient(135deg, #f5f6f7 0%, #e0e0e0 50%, #f5f6f7 100%);
     color: #333;
     overflow-x: hidden; /* Prevent horizontal scrolling */
+    justify-content: center;
+    align-items: center;
 }
 
 /* Header Styles */
@@ -128,7 +130,7 @@ main {
 }
 
 .hero_text h1 {
-    font-size: 3rem; /* Increase font size */
+    font-size: 2.5rem; /* Increase font size */
     margin-bottom: 20px;
     color: #1b1b32; /* Darker color for better contrast */
 }
@@ -186,10 +188,6 @@ main {
     text-align: center;
 }
 
-.projects {
-    background-color: #f4f4f4;
-}
-
 .contact {
     background-color: #1b1b32;
     color: white;
@@ -203,6 +201,42 @@ main {
 .contact p, .projects p {
     font-size: 1.25rem;
     margin-bottom: 20px;
+}
+
+/* Technology design */
+
+.projects {
+    background-color: #f4f4f4;
+}
+
+.slide-track {
+    animation: scroll 50s linear infinite; /* Make sliding faster */
+    display: flex;
+    gap: 10px; /* Reduce space between slides */
+    width: calc((250px + 10px) * 20); /* Account for new spacing and duplicated images */
+}
+
+.slide {
+    height: 100px;
+    width: 250px;
+}
+
+.projects img {
+    width: 100px;
+    height: 100px;
+}
+
+.slider {
+    height: 100px;
+    margin: auto;
+    overflow: hidden;
+    position: relative;
+    width: auto;
+}
+
+@keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc((-250px - 10px) * 10)); } /* Adjust for new spacing and duplicated images */
 }
 
 /* Mobile Responsive Styles */
