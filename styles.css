@@ -209,7 +209,6 @@ main {
 @media (max-width: 768px) {
     nav > ul {
         flex-direction: row; /* Horizontal alignment on mobile */
-        justify-content: center; /* Center the list items */
     }
     
     #hero {
@@ -246,10 +245,6 @@ main {
         width: 250px; /* Reduced width */
         height: 250px; /* Reduced height */
         transform: translate(-50%, -50%) scale(1); /* Adjusted scale */
-    }
-
-    nav > ul > li {
-        margin: 0 10px; /* Updated spacing for mobile */
     }
 
     .footer {
