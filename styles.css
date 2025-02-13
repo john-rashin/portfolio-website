@@ -1,0 +1,255 @@
+*{
+    scroll-behavior: smooth;
+}
+
+
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Helvetica;
+    background:linear-gradient(135deg, #f5f6f7 0%, #e0e0e0 50%, #f5f6f7 100%);
+    color: #333;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* Header Styles */
+header {
+    width: 90%; /* Reduced width for floating effect */
+    height: 80px;
+    background-color: #1A1A2E;
+    border-radius: 10px; /* Add border radius */
+    opacity: 0.9; /* Updated opacity */
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: fixed;
+    top: 10px; /* Slight offset from top */
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+nav {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav > ul  {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; /* Center the li items */
+    align-items: center;
+    margin-block: 0;
+    height: 100%;
+}
+
+nav > ul > li {
+    color: #dfdfe2;
+    margin: 0 20px;
+    padding: 0.2rem;
+    display: block;
+}
+
+nav > ul > li:hover {
+    background-color: #dfdfe2;
+    color: #1b1b32;
+    cursor: pointer;
+}
+
+li > a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Hero Section Styles */
+main {
+    padding-top: 80px; /* Adjust for fixed header */
+}
+
+@keyframes popUp {
+    0% {
+        transform: scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+#hero {
+    display: flex;
+    flex-direction: row; /* Arrange content horizontally */
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+    background: linear-gradient(135deg, #f5f6f7 0%, #e0e0e0 50%, #f5f6f7 100%); /* Creative linear gradient */
+    color: #333; /* Adjust text color for better contrast */
+    box-sizing: border-box; /* Include padding and border in element's total width and height */
+    text-align: left; /* Align text to the left */
+    animation: fadeInUp 1s ease-in-out; /* Add fade-in-up effect */
+}
+
+.hero_content {
+    display: flex;
+    flex-direction: row; /* Arrange content horizontally */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Adjust max-width for better layout */
+    padding: 20px;
+    animation: fadeInUp 1s ease-in-out; /* Add fade-in-up effect */
+}
+
+.hero_text {
+    flex: 1;
+    padding: 20px;
+    font-family: 'Helvetica', sans-serif;
+    color: #333; /* Adjust text color for better contrast */
+    animation: fadeInUp 1s ease-in-out; /* Add fade-in-up effect */
+}
+
+.hero_text h1 {
+    font-size: 3rem; /* Increase font size */
+    margin-bottom: 20px;
+    color: #1b1b32; /* Darker color for better contrast */
+}
+
+.hero_text p {
+    font-size: 1.5rem; /* Increase font size */
+    background: none; /* Remove background */
+    padding: 0; /* Remove padding */
+    border-radius: 0; /* Remove border radius */
+    box-shadow: none; /* Remove shadow */
+    animation: none; /* Remove animation */
+    line-height: 1.6;
+    color: #666; /* Lighter color for better contrast */
+}
+
+.hero_text p.highlight {
+    color: #1b1b32; /* Highlight color */
+    font-weight: bold; /* Bold text */
+}
+
+.hero_image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative; /* Position relative for overlay */
+    animation: fadeInUp 1s ease-in-out; /* Add fade-in-up effect */
+}
+
+.hero_image img {
+    max-width: 300px; /* Adjust image size */
+    height: auto;
+    border-radius: 20%; /* Update border radius for a nicer look */
+    position: relative;
+    z-index: 1; /* Ensure image is above the overlay */
+}
+
+.hero_image::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px; /* Adjust size for the overlay */
+    height: 350px;
+    background: linear-gradient(135deg, #1B1B32 10%, #2C2C54 100%); /* Creative gradient */
+    border-radius: 50%; /* Make the overlay rounded */
+    transform: translate(-50%, -50%) scale(1.1); /* Center and slightly enlarge the overlay */
+    z-index: 0; /* Ensure overlay is behind the image */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Add shadow for depth */
+}
+
+.projects, .contact {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.projects {
+    background-color: #f4f4f4;
+}
+
+.contact {
+    background-color: #1b1b32;
+    color: white;
+}
+
+.contact h2, .projects h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contact p, .projects p {
+    font-size: 1.25rem;
+    margin-bottom: 20px;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    nav > ul {
+        flex-direction: row; /* Horizontal alignment on mobile */
+    }
+    
+    #hero {
+        flex-direction: column; /* Stack hero elements vertically */
+        text-align: center;
+    }
+    
+    .hero_content {
+        flex-direction: column; /* Stack content vertically */
+        padding: 10px;
+    }
+    
+    .hero_text {
+        padding: 10px;
+    }
+    
+    .hero_text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .hero_text p {
+        font-size: 1.25rem;
+    }
+    
+    .hero_image {
+        padding: 10px;
+    }
+    
+    .hero_image img {
+        max-width: 200px; /* Reduce image size for mobile */
+    }
+    
+    .hero_image::before {
+        width: 250px; /* Reduced width */
+        height: 250px; /* Reduced height */
+        transform: translate(-50%, -50%) scale(1); /* Adjusted scale */
+    }
+
+    .footer {
+        display: flex;
+
+        padding: 20px;
+    }
+}
