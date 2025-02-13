@@ -18,12 +18,6 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install Dependencies (If Needed)
-        run: npm install  # Remove if it's a plain HTML/CSS project
-
-      - name: Build Project (If Needed)
-        run: npm run build  # Remove if it's a plain HTML/CSS project
-
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
