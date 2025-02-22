@@ -1,65 +1,80 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const slider = document.querySelector('.slide-track');
-    const slides = Array.from(slider.children);
+document.addEventListener("DOMContentLoaded", function () {
+    const typingText = document.querySelector(".typing-text");
+
+    if (typingText) {
+        const nameText = "Hi, I'm John Rashin Lomoya";
+        const highlightText = "Aspiring Software Engineer";
+        let charIndex = 0;
+        let isDeleting = false;
+        let isTypingName = true;
+
+        function typeEffect() {
+            if (!isDeleting) {
+                if (isTypingName && charIndex < nameText.length) {
+                    typingText.textContent += nameText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeEffect, 150);
+                } else if (!isTypingName && charIndex < highlightText.length) {
+                    typingText.textContent += highlightText.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeEffect, 150);
+                } else {
+                    // Pause before deleting
+                    setTimeout(() => {
+                        isDeleting = true;
+                        setTimeout(typeEffect, 500);
+                    }, 1000);
+                }
+            } else {
+                // Backspace effect
+                if (charIndex > 0) {
+                    typingText.textContent = typingText.textContent.slice(0, -1);
+                    charIndex--;
+                    setTimeout(typeEffect, 100);
+                } else {
+                    isDeleting = false;
+                    isTypingName = !isTypingName; // Switch between name and highlight text
+                    setTimeout(typeEffect, 500);
+                }
+            }
+        }
+
+        typeEffect();
+    }
+
+    const menuIcon = document.getElementById("menu-icon");
+    const navList = document.getElementById("nav-list");
+
+    if (menuIcon && navList) {
+        menuIcon.addEventListener("click", function () {
+            navList.classList.toggle("show");
+        });
+    }
+
+    // Image Slider Loop
+    const slider = document.querySelector(".slide-track");
+    const slides = slider ? Array.from(slider.children) : [];
     const totalSlides = slides.length;
 
-    // Clone slides for seamless effect
-    slides.forEach(slide => {
-        const clone = slide.cloneNode(true);
-        slider.appendChild(clone);
-    });
+    if (slider && totalSlides > 0) {
+        // Clone slides for seamless effect
+        slides.forEach((slide) => {
+            const clone = slide.cloneNode(true);
+            slider.appendChild(clone);
+        });
 
-    let scrollAmount = 0;
-    const slideWidth = slides[0].offsetWidth + 10; // Adjust for gap
+        let scrollAmount = 0;
+        const slideWidth = slides[0].offsetWidth + 10; // Adjust for gap
 
-    function scrollSlider() {
-        scrollAmount += 1;
-        if (scrollAmount >= slideWidth * totalSlides) {
-            scrollAmount = 0;
-        }
-        slider.style.transform = `translateX(-${scrollAmount}px)`;
-        requestAnimationFrame(scrollSlider);
-    }
-
-    scrollSlider();
-
-    // Typing effect for hero section
-    const nameSpan = document.querySelector('.hero_text .name');
-    const highlightText = document.querySelector('.hero_text .highlight');
-    const nameText = nameSpan.textContent;
-    const highlightMessage = highlightText.textContent;
-    nameSpan.textContent = '';
-    highlightText.textContent = '';
-    let charIndex = 0;
-    let isTypingName = true;
-
-    function typeEffect() {
-        if (isTypingName) {
-            if (charIndex < nameText.length) {
-                nameSpan.textContent += nameText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeEffect, 150); // Adjust typing speed here
-            } else {
-                isTypingName = false;
-                charIndex = 0;
-                setTimeout(typeEffect, 500); // Pause before typing highlight message
+        function scrollSlider() {
+            scrollAmount += 1;
+            if (scrollAmount >= slideWidth * totalSlides) {
+                scrollAmount = 0;
             }
-        } else {
-            if (charIndex < highlightMessage.length) {
-                highlightText.textContent += highlightMessage.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeEffect, 150); // Adjust typing speed here
-            } else {
-                setTimeout(() => {
-                    nameSpan.textContent = ''; // Clear name text
-                    highlightText.textContent = ''; // Clear highlight text
-                    charIndex = 0;
-                    isTypingName = true; // Loop back to typing name
-                    setTimeout(typeEffect, 500); // Pause before typing name again
-                }, 2000); // Pause before clearing highlight message
-            }
+            slider.style.transform = `translateX(-${scrollAmount}px)`;
+            requestAnimationFrame(scrollSlider);
         }
-    }
 
-    typeEffect();
+        scrollSlider();
+    }
 });
